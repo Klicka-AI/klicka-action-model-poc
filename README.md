@@ -1,6 +1,5 @@
-# UI-Act
-
-UI-Act is a Transformer model for interacting with a computer using the graphical user interface.
+# Klicka Action Model PoC
+This repository contains a proof-of-concept of Klicka AIs first generation Transformer model called "UI-act" for interacting with a computer using the graphical user interface. 
 The model shares the same interface as a human operator, i.e. screen input and low-level mouse/keyboard output.
 The motivation for this is to allow for seamless integration into human-computer workflows, where the model can naturally be trained using expert human demonstrations.
 
@@ -58,19 +57,3 @@ python -m ui_act.tasks.gnome_calculator.run
 
 # When prompted, enter an arithmetic expression (it's been trained to compute [0-50][+-][0-50])
 ```
-
-## Vision
-
-So far, the model is only trained on expert demonstrations for this simple toy task, and is very brittle for any visual deviations from its training data.
-There is great potential in pre-training this model, and chances are it would both generalize much better (i.e. be less sensitive to invariant features such as OS theme setting or desktop background) and become more data efficient (i.e. learn a new task from fewer expert demonstrations).
-For example, one can think of the following pre-training strategies:
- - **Pre-train model end-to-end using Video Pre-Training (VPT), similar to [OpenAI VPT](https://openai.com/research/vpt)**<br/>
-   Using VPT, the full model can be pre-trained using e.g. instructive video tutorials. This requires Inverse Dynamics Models (IDM) to extract actions from video data.
-
- - **Pre-train visual encoder**<br/>
-   The model is likely to benefit from only pre-training the visual encoder (CNN). For example, pre-training the visual encoder on detecting buttons/clickable regions has potential to yield useful representations for learning actions downstream.
-
-
-## Feedback and contributions
-
-This project is only in its infancy. If you have ideas, feedback or want to contribute, you are outmost welcome to create an Issue or reach out to tobias@norlund.se!
